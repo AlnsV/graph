@@ -98,6 +98,20 @@ func (g *Mutable) Visit(v int, do func(w int, c int64) bool) bool {
 	return false
 }
 
+// Neighbors returns the adjacent vertex of a given one
+func (g *Mutable) Neighbors(v int) []int {
+	var neighbors []int
+	for k, _ := range g.edges[v] {
+		neighbors = append(neighbors, k)
+	}
+	return neighbors
+}
+
+// Neighbors returns the adjacent vertex of a given one
+func (g *Mutable) Edges() []map[int]int64 {
+	return g.edges
+}
+
 // Degree returns the number of outward directed edges from v.
 func (g *Mutable) Degree(v int) int {
 	return len(g.edges[v])
